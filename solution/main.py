@@ -41,7 +41,7 @@ tokenizer = TweetTokenizer()
 
 
 def count_unique_tokens_in_texts(texts):
-    for _, text_series in texts.iterrows():
+    for text_series in texts:
         text = text_series['description']
         tokens = tokenizer.tokenize(text)
         for token in tokens:
@@ -78,7 +78,6 @@ text_vectors = np.zeros(
 
 texts = []
 for i, (_, text) in enumerate(train_set.iterrows()):
-    texts.append(text['text_fields']['description'])
     text_vectors[i] = text_to_vector(text['text_fields']['description'])
 
 labels = np.zeros(len(train_set), dtype=np.int_)

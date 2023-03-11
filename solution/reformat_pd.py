@@ -11,7 +11,7 @@ def load_parquet(file_path):
         product_info = json.loads(product_info)
         product_info['description'] = re.sub('<.*?>', '', product_info['description'])
 
-        descriptions.append(info_dict)
+        descriptions.append(product_info)
 
     df['text_fields'] = descriptions
 
